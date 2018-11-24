@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateInventarisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('inventaris', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('alamat');
-            $table->string('telp', 15);
-            $table->string('departemen');
-            $table->string('kartu_identitas');
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('jumlah');
+            $table->tinyInteger('kategori');
+            $table->tinyInteger('syarat');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('inventaris');
     }
 }
