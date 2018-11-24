@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Inventaris;
 
-class InventorisController extends Controller
+class InventarisController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index() {
-        return;
+        $inventarises = Inventaris::all();
+
+        return view('dashboard.inventaris.index', compact('inventarises'));
     }
 
     public function create() {
@@ -27,7 +29,7 @@ class InventorisController extends Controller
             'syarat' => $request->syarat,
         ]);
 
-        return;
+        return redirect(route('inventaris.index'));
     }
 
     public function edit() {
