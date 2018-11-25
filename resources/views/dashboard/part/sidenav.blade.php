@@ -20,12 +20,12 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">Welcome!</h6>
                     </div>
-                    <a href="./examples/profile.html" class="dropdown-item">
+{{--                     <a href="./examples/profile.html" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>My profile</span>
-                    </a>
+                    </a> --}}
                     <div class="dropdown-divider"></div>
-                    <a href="#!" class="dropdown-item">
+                    <a href="{{ route('customlogout') }}" class="dropdown-item">
                         <i class="ni ni-user-run"></i>
                         <span>Logout</span>
                     </a>
@@ -51,8 +51,13 @@
             </div>
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">
+                    <a class="nav-link" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">
+                        <i class="ni ni-books text-orange"></i> Inventaris
                     </a>
                 </li>
             </ul>
