@@ -143,8 +143,8 @@
                       <span class="input-group-text"><i class="ni ni-badge"></i></span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" name="kartu_identitas">
-                      <label class="custom-file-label" for="customFile">Kartu Identitas</label>
+                      <input type="file" class="custom-file-input" id="kartu_identitas" name="kartu_identitas" accept="image/*">
+                      <label class="custom-file-label" for="kartu_identitas">Kartu Identitas</label>
                     </div>
                   </div>
                 </div>

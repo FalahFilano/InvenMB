@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.template');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 Route::get('logout', function() {

@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('departemen');
             $table->string('kartu_identitas');
             $table->string('password');
+            $table->tinyInteger('role');
             $table->rememberToken();
             $table->timestamps();
         });
