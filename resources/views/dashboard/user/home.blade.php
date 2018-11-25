@@ -1,6 +1,6 @@
 @extends('dashboard.template')
 
-@section('title', 'user dashboard')
+@section('title', 'User Dashboard')
 
 @section('content')
 
@@ -11,10 +11,10 @@
         	<div class="row align-items-center">
         		<div class="col"><h3 class="mb-0">Daftar Peminjaman</h3></div>
         		<div class="col text-right">
-        			<button class="btn btn-icon btn-2 btn-danger" type="button">
+        			<a href="{{ route('inven.index') }}" class="btn btn-icon btn-danger">
 						<span class="btn-inner--icon"><i class="ni ni-fat-add ni"></i></span>
 						<span class="btn-inner--text">Tambah</span>
-					</button>
+					</a>
 				</div>
         	</div>        
         </div> 

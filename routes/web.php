@@ -23,5 +23,6 @@ Route::get('logout', function() {
 })->name('customlogout');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/inven', 'ListInvenController@index')->name('inven.index');
+Route::get('/admin', 'AdminController@index')->name('admin.home');
 Route::get('/inventaris', 'InventarisController@index')->name('inventaris.index');

@@ -33,8 +33,10 @@
                 <td>{{ $inventaris->jumlah }}</td>
                 <td>{{ $inventaris->kategori }}</td>
                 <td width="15%">
-                	<a href="" class="btn btn-warning">Ubah</a>
-                	<a href="" class="btn btn-danger">Hapus</a> 
+                	<a href="" class="btn btn-primary">Ubah</a>
+                	<button class="btn btn-icon btn-danger" type="button">
+                    <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                  </button> 
                 </td>
               </tr>
               @endforeach
