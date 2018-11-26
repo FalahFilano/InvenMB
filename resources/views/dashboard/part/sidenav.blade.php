@@ -56,7 +56,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link" href="{{ route('inventaris.index') }}">
                         <i class="ni ni-books text-orange"></i> Inventaris
                     </a>
                 </li>

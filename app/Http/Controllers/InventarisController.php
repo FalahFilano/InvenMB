@@ -8,17 +8,17 @@ use App\Inventaris;
 class InventarisController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('isAdmin');
     }
 
     public function index() {
-        $inventarises = Inventaris::all();
+        $inventarises = Inventaris::paginate(5);
 
-        return view('dashboard.inventaris.index', compact('inventarises'));
+        return view('dashboard.admin.inventaris.index', compact('inventarises'));
     }
 
     public function create() {
-        return;
+        return view('dashboard.admin.inventaris.create');
     }
 
     public function store(Request $request) {
@@ -32,8 +32,10 @@ class InventarisController extends Controller
         return redirect(route('inventaris.index'));
     }
 
-    public function edit() {
-        return;
+    public function edit($id) {
+        $inventaris = Inventaris::findOrFail($id);
+
+        return view('dashboard.admin.inventaris.edit', compact('inventaris'));
     }
 
     public function update(Request $request, $id) {
@@ -46,13 +48,13 @@ class InventarisController extends Controller
             'syarat' => $request->syarat,
         ])->save();
 
-        return;
+        return redirect(route('inventaris.index'));
     }
 
     public function delete($id) {
         $inventaris = Inventaris::findOrFail($id);
         $inventaris->delete();
 
-        return;
+        return redirect(route('inventaris.index'));
     }
 }
