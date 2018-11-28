@@ -17,6 +17,10 @@ class Inventaris extends Model
             return self::$category[$id];
         }
 
-        return '-';
+        return [];
+    }
+
+    public function peminjaman() {
+        return $this->belongsToMany('App\Peminjaman');
     }
 }

@@ -16,9 +16,9 @@ class CreatePeminjamenTable extends Migration
         Schema::create('peminjamen', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->integer('jumlah');
             $table->text('keterangan');
-            $table->dateTime('tgl_acc');
+            $table->dateTime('tgl_acc')->nullable();
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
