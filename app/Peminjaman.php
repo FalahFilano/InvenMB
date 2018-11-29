@@ -18,7 +18,15 @@ class Peminjaman extends Model
         'user_id', 'keterangan', 'tgl_acc', 'status'
     ];
 
+    public static function getStatus($i) {
+        return self::$status[$i];
+    }
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
     public function inventaris() {
-        return $this->belongsToMany('App\Inventaris');
+        return $this->belongsToMany('App\Inventaris')->withPivot('jumlah');
     }
 }

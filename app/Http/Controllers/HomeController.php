@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Peminjaman;
 
 class HomeController extends Controller
 {
@@ -23,8 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->isAdmin())
-            return view('dashboard.admin.home.index');
+        if (auth()->user()->isAdmin()) {
+            $peminjamans = Peminjaman::all();
+
+            return view('dashboard.admin.home.index', compact('peminjamans'));
+        }
 
         return view('dashboard.user.home.index');
     }
