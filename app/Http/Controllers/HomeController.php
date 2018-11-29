@@ -32,4 +32,7 @@ class HomeController extends Controller
 
         return view('dashboard.user.home.index');
     }
+    public function detail(){
+        return view('dashboard.admin.home.detail');
+    }
 }

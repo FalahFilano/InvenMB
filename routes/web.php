@@ -21,6 +21,7 @@ Route::get('logout', function() {
 })->name('customlogout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/detail', 'HomeController@detail')->name('detail');
 
 Route::get('/inventaris', 'Admin\InventarisController@index')->name('inventaris.index');
 Route::get('/inventaris/create', 'Admin\InventarisController@create')->name('inventaris.create');
