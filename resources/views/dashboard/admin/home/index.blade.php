@@ -32,7 +32,7 @@
                         <a class="nav-link mb-sm-3 mb-md-0" id="process-tab" data-toggle="tab" href="#process" role="tab" aria-controls="process" aria-selected="false">
                             <i class="ni ni-delivery-fast mr-2"></i>
                             <span>Diproses</span>
-                            <span class=" ml-2 badge badge-secondary"{{ $peminjaman_processed->count() }}</span>
+                            <span class=" ml-2 badge badge-secondary">{{ $peminjaman_processed->count() }}</span>
                         </a>
                     </li>
                     <li class="nav-item">
