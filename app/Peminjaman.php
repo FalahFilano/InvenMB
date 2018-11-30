@@ -29,4 +29,24 @@ class Peminjaman extends Model
     public function inventaris() {
         return $this->belongsToMany('App\Inventaris')->withPivot('jumlah');
     }
+
+    public function scopeUnread($query) {
+        return $query->where('status', 1);
+    }
+
+    public function scopeRead($query) {
+        return $query->where('status', 2);
+    }
+
+    public function scopeProcessed($query) {
+        return $query->where('status', 3);
+    }
+
+    public function scopeRejected($query) {
+        return $query->where('status', 4);
+    }
+
+    public function scopeAccepted($query) {
+        return $query->where('status', 5);
+    }
 }

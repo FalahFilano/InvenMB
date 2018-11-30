@@ -25,9 +25,13 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->user()->isAdmin()) {
-            $peminjamans = Peminjaman::all();
+            $peminjaman_unread = Peminjaman::unread()->get();
+            $peminjaman_read = Peminjaman::read()->get();
+            $peminjaman_processed = Peminjaman::processed()->get();
+            $peminjaman_rejected = Peminjaman::rejected()->get();
+            $peminjaman_accepted = Peminjaman::accepted()->get();
 
-            return view('dashboard.admin.home.index', compact('peminjamans'));
+            return view('dashboard.admin.home.index', compact('peminjaman_unread', 'peminjaman_read', 'peminjaman_processed', 'peminjaman_rejected', 'peminjaman_accepted'));
         }
 
         return view('dashboard.user.home.index');

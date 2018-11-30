@@ -23,12 +23,20 @@ Route::get('logout', function() {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/detail', 'HomeController@detail')->name('detail');
 
-Route::get('/inventaris', 'Admin\InventarisController@index')->name('inventaris.index');
-Route::get('/inventaris/create', 'Admin\InventarisController@create')->name('inventaris.create');
-Route::post('/inventaris/store', 'Admin\InventarisController@store')->name('inventaris.store');
-Route::get('/inventaris/{id}/edit', 'Admin\InventarisController@edit')->name('inventaris.edit');
-Route::put('/inventaris/{id}/update', 'Admin\InventarisController@update')->name('inventaris.update');
-Route::delete('/inventaris/{id}/delete', 'Admin\InventarisController@delete')->name('inventaris.delete');
+Route::prefix('admin')->group(function() {
+	Route::get('/inventaris', 'Admin\InventarisController@index')->name('inventaris.index');
+	Route::get('/inventaris/create', 'Admin\InventarisController@create')->name('inventaris.create');
+	Route::post('/inventaris/store', 'Admin\InventarisController@store')->name('inventaris.store');
+	Route::get('/inventaris/{id}/edit', 'Admin\InventarisController@edit')->name('inventaris.edit');
+	Route::put('/inventaris/{id}/update', 'Admin\InventarisController@update')->name('inventaris.update');
+	Route::delete('/inventaris/{id}/delete', 'Admin\InventarisController@delete')->name('inventaris.delete');
+	
+	Route::get('/peminjaman/{id}/detail', 'Admin\PeminjamanController@detail')->name('admin.peminjaman.detail');
+	Route::get('/peminjaman/{id}/process', 'Admin\PeminjamanController@process')->name('admin.peminjaman.process');
+	Route::get('/peminjaman/{id}/reject', 'Admin\PeminjamanController@reject')->name('admin.peminjaman.reject');
+	Route::get('/peminjaman/{id}/accept', 'Admin\PeminjamanController@accept')->name('admin.peminjaman.accept');
+});
+
 
 Route::get('/peminjaman', 'User\PeminjamanController@index')->name('peminjaman.index');
 Route::get('/peminjaman/create', 'User\PeminjamanController@create')->name('peminjaman.create');
