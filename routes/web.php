@@ -41,3 +41,4 @@ Route::prefix('admin')->group(function() {
 Route::get('/peminjaman', 'User\PeminjamanController@index')->name('peminjaman.index');
 Route::get('/peminjaman/create', 'User\PeminjamanController@create')->name('peminjaman.create');
 Route::post('/peminjaman/store', 'User\PeminjamanController@store')->name('peminjaman.store');
+Route::get('/peminjaman/{id}/detail', 'User\PeminjamanController@detail')->name('peminjaman.detail');

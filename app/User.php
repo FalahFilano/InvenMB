@@ -35,4 +35,8 @@ class User extends Authenticatable
     public function isUser() {
         return $this->role == '2' ? true : false;
     }
+
+    public function peminjaman() {
+        return $this->hasMany('App\Peminjaman');
+    }
 }

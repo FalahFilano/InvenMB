@@ -17,6 +17,12 @@ class PeminjamanController extends Controller
 
     }
 
+    public function detail($id) {
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        return view('dashboard.user.peminjaman.detail', compact('peminjaman'));
+    }
+
     public function create() {
         $inventaris = Inventaris::pluck('nama', 'id');
 

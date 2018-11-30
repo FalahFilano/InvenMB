@@ -34,7 +34,9 @@ class HomeController extends Controller
             return view('dashboard.admin.home.index', compact('peminjaman_unread', 'peminjaman_read', 'peminjaman_processed', 'peminjaman_rejected', 'peminjaman_accepted'));
         }
 
-        return view('dashboard.user.home.index');
+        $peminjamans = auth()->user()->peminjaman;
+
+        return view('dashboard.user.home.index', compact('peminjamans'));
     }
     public function detail(){
         return view('dashboard.admin.home.detail');

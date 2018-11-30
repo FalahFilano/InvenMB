@@ -1,6 +1,6 @@
 @extends('dashboard.template')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'User Dashboard')
 
 @section('content')
 
@@ -78,34 +78,6 @@
                                 </div>
                             @endforeach
                         </div>
-
-                        @if ($peminjaman->status == 2 or $peminjaman->status == 3)
-                            <hr class="my-4" />
-                            <h3 class="heading text-muted mb-4">Status Peminjaman</h3>
-                            <div class="pl-lg-4">
-                                @if ($peminjaman->status == 2)
-                                    <a href="{{ route('admin.peminjaman.process', $peminjaman->id) }}">
-                                        <button class="btn btn-icon btn-outline-warning pl-6 pr-6" type="button">
-                                            <span class="btn-inner--icon"><i class="ni ni-spaceship"></i></span>
-                                            <span class="btn-inner--text">Proses</span>
-                                        </button>
-                                    </a>
-                                @elseif ($peminjaman->status == 3)
-                                    <a href="{{ route('admin.peminjaman.reject', $peminjaman->id) }}">
-                                        <button class="btn btn-icon btn-outline-danger " type="button">
-                                            <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
-                                            <span class="btn-inner--text">Tolak</span>
-                                        </button>
-                                    </a>
-                                    <a href="{{ route('admin.peminjaman.accept', $peminjaman->id) }}">
-                                        <button class="btn btn-icon btn-outline-success" type="button">
-                                            <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
-                                            <span class="btn-inner--text">Terima</span>
-                                        </button>
-                                    </a>
-                                @endif
-                            </div>
-                        @endif
                     </form>
                 </div>
             </div>
