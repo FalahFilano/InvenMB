@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Inventaris;
 use App\Peminjaman;
+use App\Http\Requests\StorePeminjaman;
 
 class PeminjamanController extends Controller
 {
@@ -24,12 +25,18 @@ class PeminjamanController extends Controller
     }
 
     public function create() {
-        $inventaris = Inventaris::pluck('nama', 'id');
+        // $inventaris = Inventaris::pluck('nama', 'id');
+        $inventaris = Inventaris::all();
 
         return view('dashboard.user.peminjaman.create', compact('inventaris'));
     }
 
-    public function store(Request $request) {
+    public function store(StorePeminjaman $request) {
+        foreach ($request->inventaris as $inventaris) {
+            if ($inventaris['jumlah'] > Inventaris::find($inventaris['id'])->getAvailable())
+                return redirect()->back()->with('error', 'Jumlah Item melebihi batas yang tersedia.');
+        }
+
         $peminjaman = Peminjaman::create([
             'user_id' => auth()->user()->id,
             'keterangan' => $request->keterangan,
@@ -44,7 +51,7 @@ class PeminjamanController extends Controller
             }
         }
 
-        return redirect(route('peminjaman.create'));
+        return redirect(route('peminjaman.detail', $peminjaman->id));
     }
 
     public function edit($id) {

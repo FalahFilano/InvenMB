@@ -12,6 +12,7 @@ class Peminjaman extends Model
         '3' => 'Diproses',
         '4' => 'Ditolak',
         '5' => 'Diterima',
+        '6' => 'Dikembalikan',
     ];
 
     protected $fillable = [
@@ -48,5 +49,13 @@ class Peminjaman extends Model
 
     public function scopeAccepted($query) {
         return $query->where('status', 5);
+    }
+
+    public function scopeReturned($query) {
+        return $query->where('status', 6);
+    }
+
+    public function scopeHistory($query) {
+        return $query->where('status', 5)->orWhere('status', 6);
     }
 }

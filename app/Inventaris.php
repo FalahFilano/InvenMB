@@ -23,4 +23,19 @@ class Inventaris extends Model
     public function peminjaman() {
         return $this->belongsToMany('App\Peminjaman');
     }
+
+    public function getAvailable() {
+        $count = $this->jumlah;
+        $peminjamans = $this->peminjaman;
+
+        foreach ($peminjamans as $peminjaman) {
+            if ($peminjaman->status == 5) {
+                foreach ($peminjaman->inventaris as $inventaris) {
+                    if ($inventaris->id == $this->id) $count -= $inventaris->pivot->jumlah;
+                }
+            }
+        }
+
+        return $count;
+    }
 }

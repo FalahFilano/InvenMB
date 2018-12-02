@@ -1,5 +1,6 @@
 {!! Form::open(['route' => 'peminjaman.store']) !!}
     <h6 class="heading-small text-muted mb-4">Data Peminjaman</h6>
+    @include('dashboard.part.error_message')
     <div class="pl-lg-4">
         <div class="row">
             <div class="col-lg-6">
@@ -35,7 +36,13 @@
                 <div class="col">
                     <div class="form-group focused">
                         {!! Form::label('inventaris[0][id]', 'Item', ['class' => 'form-control-label']) !!}
-                        {!! Form::select('inventaris[0][id]', $inventaris, null,['class' => 'form-control form-control-alternative', 'placeholder' => 'Pilih Item', 'required']) !!}
+                        {{-- {!! Form::select('inventaris[0][id]', $inventaris, null,['class' => 'form-control form-control-alternative', 'placeholder' => 'Pilih Item', 'required']) !!} --}}
+                        <select class="form-control form-control-alternative" required id="inventaris[0][id]" name="inventaris[0][id]">
+                            <option selected="selected" value="">Pilih Item</option>
+                            @foreach ($inventaris as $i)
+                                <option value="{{ $i->id }}">{{ $i->nama }} (Tersedia: {{ $i->getAvailable() }})</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div class="col-3">

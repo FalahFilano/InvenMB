@@ -79,7 +79,19 @@
                             @endforeach
                         </div>
 
-                        @if ($peminjaman->status == 2 or $peminjaman->status == 3)
+                        <hr class="my-4">
+                        <h3 class="heading text-muted mb-4">Tujuan Peminjaman</h3>
+                        <div class="pl-lg-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="h4 font-weight-400">
+                                        <h3>{{ $peminjaman->keterangan }}</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        @if ($peminjaman->status == 2 or $peminjaman->status == 3 or $peminjaman->status == 5)
                             <hr class="my-4" />
                             <h3 class="heading text-muted mb-4">Status Peminjaman</h3>
                             <div class="pl-lg-4">
@@ -101,6 +113,13 @@
                                         <button class="btn btn-icon btn-outline-success" type="button">
                                             <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
                                             <span class="btn-inner--text">Terima</span>
+                                        </button>
+                                    </a>
+                                @elseif ($peminjaman->status == 5)
+                                    <a href="{{ route('admin.peminjaman.return', $peminjaman->id) }}">
+                                        <button class="btn btn-icon btn-outline-warning pl-6 pr-6" type="button">
+                                            <span class="btn-inner--icon"><i class="ni ni-curved-next"></i></span>
+                                            <span class="btn-inner--text">Kembalikan</span>
                                         </button>
                                     </a>
                                 @endif

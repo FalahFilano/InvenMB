@@ -31,10 +31,12 @@ Route::prefix('admin')->group(function() {
 	Route::put('/inventaris/{id}/update', 'Admin\InventarisController@update')->name('inventaris.update');
 	Route::delete('/inventaris/{id}/delete', 'Admin\InventarisController@delete')->name('inventaris.delete');
 	
+	Route::get('/peminjaman/riwayat', 'Admin\PeminjamanController@history')->name('admin.peminjaman.history');
 	Route::get('/peminjaman/{id}/detail', 'Admin\PeminjamanController@detail')->name('admin.peminjaman.detail');
 	Route::get('/peminjaman/{id}/process', 'Admin\PeminjamanController@process')->name('admin.peminjaman.process');
 	Route::get('/peminjaman/{id}/reject', 'Admin\PeminjamanController@reject')->name('admin.peminjaman.reject');
 	Route::get('/peminjaman/{id}/accept', 'Admin\PeminjamanController@accept')->name('admin.peminjaman.accept');
+	Route::get('/peminjaman/{id}/return', 'Admin\PeminjamanController@return')->name('admin.peminjaman.return');
 });
 
 

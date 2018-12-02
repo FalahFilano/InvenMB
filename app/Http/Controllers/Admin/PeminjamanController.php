@@ -19,6 +19,12 @@ class PeminjamanController extends Controller
         return view('dashboard.admin.peminjaman.detail', compact('peminjaman'));
     }
 
+    public function history() {
+        $peminjamans = Peminjaman::history()->get();
+
+        return view('dashboard.admin.peminjaman.history', compact('peminjamans'));
+    }
+
     public function process($id) {
         $peminjaman = Peminjaman::findOrFail($id);
 
@@ -47,6 +53,17 @@ class PeminjamanController extends Controller
         if ($peminjaman->status == 3)
             $peminjaman->update([
                 'status' => 5
+            ]);
+
+        return redirect()->back();
+    }
+
+    public function return($id) {
+        $peminjaman = Peminjaman::findOrFail($id);
+
+        if ($peminjaman->status == 5)
+            $peminjaman->update([
+                'status' => 6
             ]);
 
         return redirect()->back();

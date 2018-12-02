@@ -1,6 +1,6 @@
 @extends('dashboard.template')
 
-@section('title', 'User Dashboard')
+@section('title', 'Riwayat Peminjaman')
 
 @section('content')
 <div class="row">
@@ -9,15 +9,7 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="mb-0">Daftar Peminjaman</h3>
-                    </div>
-                    <div class="col text-right">
-                        <a href="{{ route('peminjaman.create') }}">
-                            <button class="btn btn-icon btn-2 btn-danger" type="button">
-                                <span class="btn-inner--icon"><i class="ni ni-fat-add ni"></i></span>
-                                <span class="btn-inner--text">Tambah</span>
-                            </button>
-                        </a>
+                        <h3 class="mb-0">Riwayat Peminjaman</h3>
                     </div>
                 </div>
             </div>
@@ -75,7 +67,7 @@
                                 </span>
                             </td>
                             <td valign="middle">
-                                <a href="{{ route('peminjaman.detail', $peminjaman->id) }}" class="btn btn-warning">Detail</a>
+                                <a href="{{ route('admin.peminjaman.detail', $peminjaman->id) }}" class="btn btn-warning">Detail</a>
                             </td>
                         </tr>
                         @endforeach
