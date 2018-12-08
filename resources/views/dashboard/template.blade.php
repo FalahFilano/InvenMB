@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@yield("title") · InvenMB</title>
+    @include('dashboard.part.meta')
+    <title>@yield("title") - InvenMB</title>
     @include("dashboard.part.css")
 </head>
 <body>

@@ -85,7 +85,8 @@ class RegisterController extends Controller
             'telp' => $data['telp'],
             'alamat' => $data['alamat'],
             'departemen' => $data['departemen'],
-            'kartu_identitas' => $identitas
+            'kartu_identitas' => $identitas,
+            'role' => 2
         ]);
     }
 }

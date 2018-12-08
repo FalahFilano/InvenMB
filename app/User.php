@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama', 'email', 'password', 'telp', 'alamat', 'departemen', 'kartu_identitas'
+        'nama', 'email', 'password', 'telp', 'alamat', 'departemen', 'kartu_identitas', 'role'
     ];
 
     /**
@@ -27,4 +27,16 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin() {
+        return $this->role == '1' ? true : false;
+    }
+
+    public function isUser() {
+        return $this->role == '2' ? true : false;
+    }
+
+    public function peminjaman() {
+        return $this->hasMany('App\Peminjaman');
+    }
 }

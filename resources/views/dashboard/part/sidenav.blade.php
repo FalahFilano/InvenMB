@@ -55,11 +55,28 @@
                         <i class="ni ni-tv-2 text-primary"></i> Dashboard
                     </a>
                 </li>
+
+                @if (auth()->user()->isAdmin())
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('inven.index') }}">
+                    <a class="nav-link" href="{{ route('inventaris.index') }}">
                         <i class="ni ni-books text-orange"></i> Inventaris
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.peminjaman.history') }}">
+                        <i class="ni ni-archive-2 text-info"></i> Riwayat Peminjaman
+                    </a>
+                </li>
+                @endif
+
+                @if (auth()->user()->isUser())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('peminjaman.create') }}">
+                        <i class="ni ni-books text-orange"></i> Peminjaman
+                    </a>
+                </li>
+                @endif
             </ul>
         </div>
     </div>

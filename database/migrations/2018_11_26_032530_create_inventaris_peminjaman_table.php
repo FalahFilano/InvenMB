@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePeminjamenTable extends Migration
+class CreateInventarisPeminjamanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePeminjamenTable extends Migration
      */
     public function up()
     {
-        Schema::create('peminjamen', function (Blueprint $table) {
+        Schema::create('inventaris_peminjaman', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->text('keterangan');
-            $table->dateTime('tgl_acc')->nullable();
-            $table->tinyInteger('status');
+            $table->unsignedInteger('peminjaman_id');
+            $table->unsignedInteger('inventaris_id');
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePeminjamenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('peminjamen');
+        Schema::dropIfExists('inventaris_peminjaman');
     }
 }
