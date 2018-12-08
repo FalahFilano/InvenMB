@@ -29,6 +29,7 @@
                             <th scope="col">Nama Inventaris</th>
                             <th scope="col">Jumlah</th>
                             <th scope="col">Tersedia</th>
+                            <th scope="col">Lokasi</th>
                             <th scope="col">Kategori</th>
                             <th scope="col"></th>
                         </tr>
@@ -45,6 +46,7 @@
                             </th>
                             <td>{{ $inventaris->jumlah }}</td>
                             <td>{{ $inventaris->getAvailable() }}</td>
+                            <td>{{ $inventaris->lokasi }}</td>
                             <td>{{ \App\Inventaris::getCategory($inventaris->kategori) }}</td>
                             <td width="15%">
                                 <a href="{{ route('inventaris.edit', $inventaris->id) }}" class="btn btn-warning">Ubah</a>

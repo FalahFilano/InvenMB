@@ -9,7 +9,7 @@ class Inventaris extends Model
     protected static $category = ['1' => 'Sarana', '2' => 'Prasarana'];
 
     protected $fillable = [
-        'nama', 'jumlah', 'kategori', 'syarat'
+        'nama', 'jumlah', 'lokasi', 'kategori', 'syarat'
     ];
 
     public static function getCategory($id = null) {

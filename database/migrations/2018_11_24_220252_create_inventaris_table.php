@@ -17,6 +17,7 @@ class CreateInventarisTable extends Migration
             $table->increments('id');
             $table->string('nama');
             $table->integer('jumlah');
+            $table->text('lokasi');
             $table->tinyInteger('kategori');
             $table->tinyInteger('syarat');
             $table->timestamps();

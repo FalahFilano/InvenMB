@@ -26,6 +26,7 @@ class InventarisController extends Controller
         $inventaris = Inventaris::create([
             'nama' => $request->nama,
             'jumlah' => $request->jumlah,
+            'lokasi' => $request->lokasi,
             'kategori' => $request->kategori,
             'syarat' => $request->syarat,
         ]);
@@ -45,6 +46,7 @@ class InventarisController extends Controller
         $inventaris->fill([
             'nama' => $request->nama,
             'jumlah' => $request->jumlah,
+            'lokasi' => $request->lokasi,
             'kategori' => $request->kategori,
             'syarat' => $request->syarat,
         ])->save();

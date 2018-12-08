@@ -29,6 +29,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    {!! Form::label('lokasi', 'Lokasi', ['class' => 'form-control-label']) !!}
+                    {!! Form::textarea('lokasi', null, ['class' => 'form-control form-control-alternative', 'placeholder' => 'Lokasi', 'rows' => 3, 'required']) !!}
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-default">Simpan</button>
     </div>
 {!! Form::close() !!}
