@@ -7,15 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Inventaris;
 use App\Peminjaman;
 use App\Http\Requests\StorePeminjaman;
+use Barryvdh\DomPDF\Facade;
 
 class PeminjamanController extends Controller
 {
     public function __construct() {
         $this->middleware('isUser');
-    }
-
-    public function index() {
-
     }
 
     public function detail($id) {
@@ -54,26 +51,7 @@ class PeminjamanController extends Controller
         return redirect(route('peminjaman.detail', $peminjaman->id));
     }
 
-    public function edit($id) {
-        $peminjamans = Peminjaman::all();
-
-        return;
-    }
-
-    public function update(Request $request, $id) {
-        $peminjaman = Peminjaman::findOrFail($id);
-
-        $peminjaman->fill([
-            'user_id' => auth()->user()->id,
-            'keterangan' => $request->keterangan,
-            'status' => '1'
-        ])->save();
-    }
-
-    public function delete($id) {
-        $peminjaman = Peminjman::findOrFail($id);
-        $peminjaman->delete();
-
-        return;
+    public function cetak() {
+        return PDF::loadView('dashboard.pdf.izin_prasarana')->setPaper('a4', 'portrait')->stream();
     }
 }

@@ -44,3 +44,4 @@ Route::get('/peminjaman', 'User\PeminjamanController@index')->name('peminjaman.i
 Route::get('/peminjaman/create', 'User\PeminjamanController@create')->name('peminjaman.create');
 Route::post('/peminjaman/store', 'User\PeminjamanController@store')->name('peminjaman.store');
 Route::get('/peminjaman/{id}/detail', 'User\PeminjamanController@detail')->name('peminjaman.detail');
+Route::get('/peminjaman/cetak', 'User\PeminjamanController@cetak')->name('peminjaman.cetak');

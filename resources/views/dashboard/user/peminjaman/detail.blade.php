@@ -94,7 +94,7 @@
                         <hr class="my-4" />
                         <h3 class="heading text-muted mb-4">Cetak Surat Izin</h3>
                         <div class="pl-lg-4">
-                            <a href="{{ route('admin.peminjaman.process', $peminjaman->id) }}">
+                            <a href="{{ route('peminjaman.cetak') }}">
                                 <button class="btn btn-icon btn-outline-info pl-6 pr-6" type="button">
                                     <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
                                     <span class="btn-inner--text">Cetak</span>

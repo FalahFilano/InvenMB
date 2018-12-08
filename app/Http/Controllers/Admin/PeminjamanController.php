@@ -8,6 +8,10 @@ use App\Peminjaman;
 
 class PeminjamanController extends Controller
 {
+    public function __construct() {
+        $this->middleware('isAdmin');
+    }
+    
     public function detail($id) {
         $peminjaman = Peminjaman::findOrFail($id);
 
