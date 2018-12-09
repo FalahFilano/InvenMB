@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Peminjaman;
+use Carbon\Carbon;
 
 class PeminjamanController extends Controller
 {
@@ -56,7 +57,9 @@ class PeminjamanController extends Controller
 
         if ($peminjaman->status == 3)
             $peminjaman->update([
-                'status' => 5
+                'status' => 5,
+                'tgl_acc' => Carbon::now(),
+                'no_surat' => Peminjaman::generateNomorSurat(),
             ]);
 
         return redirect()->back();

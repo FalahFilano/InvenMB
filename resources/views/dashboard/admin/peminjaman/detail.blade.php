@@ -51,8 +51,9 @@
                                 </div>
                             </div>
                         </div>
+
                         <hr class="my-4" />
-                        <!-- Address -->
+
                         <h3 class="heading text-muted mb-4">Inventaris Dipinjam</h3>
                         <div class="pl-lg-4">
                             <div class="row">
@@ -80,12 +81,48 @@
                         </div>
 
                         <hr class="my-4">
+
                         <h3 class="heading text-muted mb-4">Tujuan Peminjaman</h3>
                         <div class="pl-lg-4">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                    <h3>Nama Kegiatan</h3>
                                     <div class="h4 font-weight-400">
-                                        <h3>{{ $peminjaman->keterangan }}</h3>
+                                        <span>{{ $peminjaman->nama_kegiatan }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h3>Departemen</h3>
+                                    <div class="h4 font-weight-400">
+                                        <span>{{ $peminjaman->departemen }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3>Waktu Kegiatan</h3>
+                                    <div class="h4 font-weight-400">
+                                        <span id="waktu_kegiatan"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h3>Tempat Kegiatan</h3>
+                                    <div class="h4 font-weight-400">
+                                        <span>{{ $peminjaman->tempat_kegiatan }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3>NRP Ketua Panitia</h3>
+                                    <div class="h4 font-weight-400">
+                                        <span>{{ $peminjaman->nrp_ketua }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h3>Nama Ketua Panitia</h3>
+                                    <div class="h4 font-weight-400">
+                                        <span>{{ $peminjaman->nama_ketua }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -132,4 +169,16 @@
     </div>
 </div>
 
+@endsection
+
+@section('js')
+    <script>
+        $(function() {
+            moment.locale('id');
+
+            $('#waktu_kegiatan').html(
+                moment({{ $peminjaman->tgl_kegiatan->format('Ymd') }}, "YYYYMMDD").format('dddd, D MMMM YYYY') + '<br>Jam {{ $peminjaman->waktu_kegiatan }} WIB'
+            );
+        });
+    </script>
 @endsection

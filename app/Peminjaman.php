@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Peminjaman extends Model
 {
@@ -16,7 +17,11 @@ class Peminjaman extends Model
     ];
 
     protected $fillable = [
-        'user_id', 'keterangan', 'tgl_acc', 'status'
+        'user_id', 'no_surat', 'nama_kegiatan', 'tgl_kegiatan', 'waktu_kegiatan', 'tempat_kegiatan', 'departemen', 'nama_ketua', 'nrp_ketua', 'keterangan', 'tgl_acc', 'status'
+    ];
+
+    protected $dates = [
+        'created_at', 'updated_at', 'tgl_acc', 'tgl_kegiatan'
     ];
 
     public static function getStatus($i) {
@@ -57,5 +62,12 @@ class Peminjaman extends Model
 
     public function scopeHistory($query) {
         return $query->where('status', 5)->orWhere('status', 6);
+    }
+
+    public static function generateNomorSurat() {
+        $now = Carbon::now();
+        $peminjaman_terakhir = self::whereMonth('tgl_acc', $now->month)->whereYear('tgl_acc', $now->year)->latest()->first();
+
+        return $peminjaman_terakhir && $peminjaman_terakhir->no_surat ? $peminjaman_terakhir->no_surat + 1 : 1;
     }
 }
